@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h3{
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+        }
+        header {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        header .left {
+            width: 40%;
+            display: flex;
+        }
+
+        header .left > i {
+            font-size: 40px;
+            color: dodgerblue;
+        }
+
+        header .left input {
+            width: 100%;
+            margin-left: 50px;
+            border-radius: 5px;
+            border: none;
+            background-color: #efefec;
+            padding: 10px;
+        }
+
+        header .left input:focus-visible {
+            outline: none;
+        }
+
+        header .left button {
+            width: 50px;
+            margin-left: -5px;
+            border-radius: 5px;
+            border: none;
+            background-color: #efefec;
+            cursor: pointer;
+        }
+
+        header .left button i {
+            font-size: 17px;
+            color: #b4b4a8;
+        }
+
+        header .right {
+            width: 35%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header .right img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            object-position: 80% 80%;
+            border-radius: 50%;
+        }
+
+        header .right ul {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            list-style: none;
+            text-align: center;
+        }
+
+        header .right ul li {
+            width: 30%;
+            border-right: 1px solid #efefec;
+
+            padding: 3px;
+        }
+
+        header .right ul .li-last {
+            border: none;
+        }
+
+        header .right ul li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        header .right ul ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        header .right ul ul li {
+            border: none;
+            font-size: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        header .right ul ul li i {
+            color: #96e3e3;
+        }
+
+        header .right ul ul .icon-change i {
+            color: #efefec;
+        }
+
+        header .right ul ul .icon-bonus {
+            position: relative;
+        }
+
+        header .right ul ul .icon-bonus:before {
+            content: '6';
+            font-size: 10px;
+            position: absolute;
+            top: -5px;
+            right: 15px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: blue;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .news-feed {
+            display: flex;
+            justify-content: space-between;
+            background-color: #efefeb;
+        }
+
+        .news-feed .list {
+            width: 10%;
+            height: 1000px;
+            background-color: #efefe3;
+            box-shadow: inset -7px -6px 10px -5px #7c7a7a;
+        }
+
+        .news-feed .list ul:first-child {
+            margin: 40px 0;
+        }
+
+        .news-feed .list ul:first-child li:first-child {
+            background-color: white;
+            border-left: 5px solid #3e3ee5;
+            color: #3e3ee5;
+        }
+
+        .news-feed .list ul:first-child li:first-child a {
+            color: #3e3ee5;
+        }
+
+        .news-feed .list ul li {
+            list-style: none;
+            color: #85857e;
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+
+        .news-feed .list ul li:focus {
+            background-color: white;
+        }
+
+        .news-feed .list ul li i {
+            margin-right: 10px;
+            font-size: 22px;
+        }
+
+        .news-feed .list ul li a {
+            text-decoration: none;
+            color: #85857e;
+        }
+
+        .news-feed .list ul li:focus-within a,
+        .news-feed .list ul li:focus-within i {
+            color: #3e3ee5;
+        }
+
+        .news-feed .list .ul-last {
+            margin-bottom: 10px;
+        }
+
+        .news-feed .list p {
+            margin-left: 30px;
+            font-weight: bold;
+        }
+
+        .news-feed .list .a-last {
+            text-decoration: none;
+            margin: 30px;
+            font-size: 17px;
+        }
+
+        .news-feed .status {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .news-feed .status img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            object-position: 80% 80%;
+            border-radius: 50%;
+            margin: 10px;
+        }
+
+        .news-feed .status .status-top {
+            border: 1px solid #efefeb;
+            border-radius: 5px;
+            width: 100%;
+            position: relative;
+            margin-top: 40px;
+            background-color: white;
+        }
+
+        .news-feed .status .status-top input {
+            width: 90%;
+            height: 40px;
+            position: absolute;
+            top: 18px;
+            left: 70px;
+            padding: 5px;
+            border: none;
+        }
+
+        .news-feed .status .status-top input:focus-visible {
+            outline: none;
+        }
+
+        .news-feed .status .status-top .status-action ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            padding: 15px;
+            border-top: 2px solid #efefeb;
+        }
+
+        .news-feed .status .status-top .status-action ul a {
+            text-decoration: none;
+            color: #85857e;
+        }
+
+        .news-feed .status .status-top .status-action ul i {
+            margin-right: 10px;
+            color: #85857e;
+        }
+
+        .news-feed .status .status-mid {
+            border: 1px solid #efefeb;
+            border-radius: 5px;
+            width: 100%;
+            position: relative;
+            margin-top: 40px;
+            background-color: white;
+        }
+
+        .news-feed .status .status-mid .status-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .news-feed .status .status-mid .status-name .text p {
+            color: #85857e;
+        }
+
+        .news-feed .status .status-mid .status-name .text p:first-child {
+            color: #3e3ee5;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 900px;
+        }
+
+        .news-feed .status .status-mid .status-name span {
+            color: #85857e;
+            padding-right: 20px;
+        }
+
+        .news-feed .status .status-mid .status-text {
+            margin-left: 10px;
+            color: #504f4f;
+        }
+        .news-feed .status .status-mid .status-img {
+            display: flex;
+            justify-content: space-around;
+            margin: 5px 0;
+        }
+        .news-feed .status .status-mid .status-img img {
+            width: 340px;
+            height: 250px;
+            border-radius: 5px;
+        }
+        .news-feed .status .status-mid .like {
+            margin: 0 10px 20px;
+        }
+        .news-feed .status .status-mid .like span {
+            margin-right: 20px;
+            color: #85857e;
+        }
+        .news-feed .status .status-mid .like span:first-child {
+            color: #3e3ee5;
+        }
+        .news-feed .status .status-mid .like i {
+            font-size: 25px;
+        }
+        .news-feed .advertise {
+            width: 20%;
+            border: 1px solid #efefeb;
+            border-radius: 5px;
+            position: relative;
+            margin-top: 25px;
+            padding: 15px 10px;
+        }
+        .news-feed .advertise .advertise-stories{
+            height: 170px;
+            background-color: white;
+            padding: 25px 20px;
+            border-radius: 5px;
+        }
+        .news-feed .advertise .advertise-stories .advertise-title{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .news-feed .advertise .advertise-stories .advertise-title p{
+            color: #3e3ee5;
+        }
+        .news-feed .advertise .advertise-stories img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            object-position: 80% 80%;
+            border-radius: 50%;
+        }
+        .news-feed .advertise .advertise-stories .advertise-img{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .news-feed .advertise .advertise-stories .advertise-img .border-img{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid #3e3ee5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .news-feed .advertise .advertise-stories .advertise-img a{
+            text-decoration: none;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3e3ee5;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            border-radius: 50%;
+        }
+        .news-feed .advertise .advertise-recently{
+            height: 410px;
+            width: 100%;
+            background-color: white;
+            padding: 25px 20px;
+            border-radius: 5px;
+            margin-top: 40px;
+        }
+        .news-feed .advertise .advertise-recently h3{
+            margin-bottom: 20px;
+        }
+        .news-feed .advertise .advertise-recently .advertise-img{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .news-feed .advertise .advertise-recently .recently-img{
+            width: 48%;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .news-feed .advertise .advertise-recently .advertise-img img {
+            height: 150px;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .news-feed .advertise .advertise-recently .advertise-img p{
+            position: absolute;
+            bottom: 1px;
+            left: -3px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="left">
+        <i class="fa-brands fa-square-facebook"></i>
+        <input type="text" name="sreach" placeholder="Search">
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="right">
+        <img src="img/anhdaidien.jpg" alt="anhdaidien">
+        <ul>
+            <li><p><a href="#">Tuấn Quang</a></p></li>
+            <li><p><a href="#">Create</a></p></li>
+            <li class="li-last"><p><a href="#">Home</a></p></li>
+            <ul>
+                <li class="icon-bonus"><a href="#"><i class="fa-brands fa-facebook-messenger"></i></a></li>
+                <li class="icon-bonus"><a href="#"><i class="fa-solid fa-bell"></i></a></li>
+                <li class="icon-change"><a href="#"><i class="fa-solid fa-user-group"></i></a></li>
+                <li class="icon-change"><a href="#"><i class="fa-solid fa-question"></i></a></li>
+                <li class="icon-change"><a href="#"><i class="fa-solid fa-caret-down"></i></a></li>
+            </ul>
+        </ul>
+    </div>
+</header>
+<section class="news-feed">
+    <section class="list">
+        <ul>
+            <li><i class="fa fa-newspaper"></i><a href="#">News Feed</a></li>
+            <li><i class="fab fa-facebook-messenger"></i><a href="#">Messages</a></li>
+            <li><i class="fab fa-youtube"></i><a href="#">Watch</a></li>
+            <li><i class="fa fa-cart-arrow-down"></i><a href="#">Marketplace</a></li>
+        </ul>
+        <ul class="ul-last">
+            <p>Explare</p>
+            <li><i class="fa fa-donate"></i><a href="#">Fundraisers</a></li>
+            <li><i class="fa fa-pager"></i><a href="#">Pages</a></li>
+            <li><i class="fa fa-users"></i><a href="#">Grups</a></li>
+            <li><i class="fab fa-envira"></i><a href="#">Events</a></li>
+            <li><i class="fa fa-save"></i><a href="#">Saves</a></li>
+        </ul>
+        <a class="a-last" href="#">See more</a>
+    </section>
+    <section class="status">
+        <div class="status-top">
+            <img src="img/anhdaidien.jpg" alt="adh">
+            <input type="text" name="status" placeholder="What's on your mind, Tuấn Quang?">
+            <div class="status-action">
+                <ul>
+                    <li><a href="#"><i class="fa fa-image"></i> Photo/Video</a></li>
+                    <li><a href="#"><i class="fa fa-user-tag"></i> Tag Friends</a></li>
+                    <li><a href="#"><i class="fa fa-smile-beam"></i>Feeling/Activity</a></li>
+                    <li><a href="#"><i class="fa fa-bars"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="status-mid">
+            <div class="status-name">
+                <img src="img/anhdaidien.jpg" alt="adh">
+                <div class="text">
+                    <p>Mario Jacod</p>
+                    <p>a minute ago</p>
+                </div>
+                <span><i class="fa fa-bars"></i></span>
+            </div>
+            <div class="status-text">
+                <p>Relax and qulity time with my self</p>
+                <p>good time good place</p>
+            </div>
+            <div class="status-img">
+                <img src="img/anh1.jpg" alt="anh1">
+                <img src="img/anh2.jpg" alt="anh2">
+                <img src="img/anh3.jpg" alt="anh3">
+            </div>
+            <div class="like">
+                <span><i class="fa fa-thumbs-up"></i> 147</span>
+                <span><i class="fa fa-comment-alt"></i> 7</span>
+                <span><i class="fa fa-share"></i> 12</span>
+            </div>
+        </div>
+        <div class="status-mid">
+            <div class="status-name">
+                <img src="img/anhdaidien.jpg" alt="adh">
+                <div class="text">
+                    <p>Mario Jacod</p>
+                    <p>a minute ago</p>
+                </div>
+                <span><i class="fa fa-bars"></i></span>
+            </div>
+            <div class="status-text">
+                <p>Relax and qulity time with my self</p>
+                <p>good time good place</p>
+            </div>
+            <div class="status-img">
+                <img src="img/anh1.jpg" alt="anh1">
+                <img src="img/anh2.jpg" alt="anh2">
+                <img src="img/anh3.jpg" alt="anh3">
+            </div>
+            <div class="like">
+                <span><i class="fa fa-thumbs-up"></i> 147</span>
+                <span><i class="fa fa-comment-alt"></i> 7</span>
+                <span><i class="fa fa-share"></i> 12</span>
+            </div>
+        </div>
+    </section>
+    <section class="advertise">
+        <div class="advertise-stories">
+            <div class="advertise-title">
+                <h3>Stories</h3>
+                <p>See All</p>
+            </div>
+            <div class="advertise-img">
+                <a href="#">+</a>
+                <div class="border-img">
+                    <img src="img/anh1.jpg" alt="anh 1">
+                </div>
+
+                <div class="border-img">
+                    <img src="img/anh2.jpg" alt="anh 2">
+                </div>
+                <div class="border-img">
+                    <img src="img/anh3.jpg" alt="anh 3">
+                </div>
+            </div>
+        </div>
+        <div class="advertise-recently">
+            <h3>Recently Viewed</h3>
+            <div class="advertise-img">
+                <div class="recently-img">
+                    <img src="img/anhdaidien.jpg" alt="add">
+                    <p>Rp 72.000</p>
+                </div>
+                <div class="recently-img">
+                    <img src="img/anh1.jpg" alt="a1">
+                    <p>Rp 72.000</p>
+                </div>
+                <div class="recently-img">
+                    <img src="img/anh2.jpg" alt="a2">
+                    <p>Rp 72.000</p>
+                </div>
+                <div class="recently-img">
+                    <img src="img/anh3.jpg" alt="a3">
+                    <p>Rp 72.000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>
